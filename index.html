@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghanaian-Hungarian Community</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #f5f5f5;
+        }
+
+        .kente-pattern {
+            background: linear-gradient(90deg, 
+                #CE1126 0%, #CE1126 20%,
+                #FCD116 20%, #FCD116 40%,
+                #006B3F 40%, #006B3F 60%,
+                #000000 60%, #000000 80%,
+                #CE1126 80%, #CE1126 100%
+            );
+            height: 8px;
+        }
+
+        nav {
+            background: #ffffff;
+            padding: 1.5rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #CE1126, #FCD116, #006B3F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #CE1126;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(206, 17, 38, 0.95), rgba(0, 107, 63, 0.95)),
+                        url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="%23FCD116"/><rect x="20" width="20" height="20" fill="%23CE1126"/><rect x="40" width="20" height="20" fill="%23006B3F"/><rect x="60" width="20" height="20" fill="%23000000"/><rect x="80" width="20" height="20" fill="%23FCD116"/></svg>');
+            color: white;
+            padding: 8rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(252, 209, 22, 0.1) 10px,
+                rgba(252, 209, 22, 0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(28px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #FCD116;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(252, 209, 22, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(252, 209, 22, 0.6);
+        }
+
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #CE1126, #FCD116, #006B3F);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #FCD116;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #CE1126, #006B3F);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .events {
+            background: linear-gradient(135deg, #006B3F, #004d2c);
+            color: white;
+            padding: 5rem 5%;
+        }
+
+        .events-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .event-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #FCD116;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .event-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(10px);
+        }
+
+        .event-date {
+            color: #FCD116;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #CE1126, #006B3F);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kente-pattern"></div>
+    
+    <nav>
+        <div class="nav-content">
+            <div class="logo">GH-HU Community</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Akwaaba! Üdvözöljük!</h1>
+            <p>Bridging Cultures, Building Community Between Ghana and Hungary</p>
+            <a href="#about" class="cta-button">Join Our Community</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2 class="section-title">About Us</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #666; font-size: 1.1rem; line-height: 1.8;">
+            The Ghanaian-Hungarian Community is a vibrant network celebrating the rich cultural heritage of Ghana while embracing our home in Hungary. We foster connections, preserve traditions, and create opportunities for cultural exchange between our two nations.
+        </p>
+    </section>
+
+    <section class="section" id="programs">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🎭</div>
+                <h3>Cultural Events</h3>
+                <p>Experience traditional Ghanaian celebrations, music, dance, and festivals throughout the year, sharing our heritage with the Hungarian community.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🍲</div>
+                <h3>Food & Cuisine</h3>
+                <p>Join our cooking workshops and food festivals featuring authentic Ghanaian dishes like jollof rice, fufu, and groundnut soup.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Community Support</h3>
+                <p>Connect with fellow Ghanaians and Hungarians through mentorship programs, networking events, and social gatherings.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3>Language Exchange</h3>
+                <p>Learn Twi, Ga, Ewe, or Hungarian through our language exchange programs and improve cross-cultural communication.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <h3>Youth Programs</h3>
+                <p>Educational initiatives for young people to explore their heritage and build bridges between cultures.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Business Network</h3>
+                <p>Connect Ghanaian and Hungarian entrepreneurs, fostering trade and business opportunities between our nations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="events" id="events">
+        <div class="events-content">
+            <h2 class="section-title" style="color: white;">Upcoming Events</h2>
+            <div class="event-item">
+                <div class="event-date">November 15, 2025</div>
+                <div class="event-title">Ghana Independence Day Celebration</div>
+                <p>Join us for a grand celebration with traditional music, dance performances, and authentic Ghanaian cuisine.</p>
+            </div>
+            <div class="event-item">
+                <div class="event-date">December 8, 2025</div>
+                <div class="event-title">Cultural Exchange Workshop</div>
+                <p>An interactive session exploring the parallels and differences between Ghanaian and Hungarian traditions.</p>
+            </div>
+            <div class="event-item">
+                <div class="event-date">January 2026</div>
+                <div class="event-title">New Year Community Gathering</div>
+                <p>Welcome the new year with music, food, and fellowship as we strengthen our community bonds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p style="text-align: center; color: #666; font-size: 1.1rem; max-width: 600px; margin: 2rem auto;">
+            Want to learn more about our community or participate in upcoming events? We'd love to hear from you!
+        </p>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="mailto:info@ghanaian-hungarian.hu" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" title="Facebook">f</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="WhatsApp">💬</a>
+            </div>
+            <p>&copy; 2025 Ghanaian-Hungarian Community. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">Bridging continents, connecting hearts</p>
+        </div>
+    </footer>
+</body>
+</html>
