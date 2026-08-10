@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Hunghanians</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-content">
+            <a href="index.html#home" aria-label="Hunghanians home">
+                <img src="logo_new.jpg" alt="Hunghanians Logo" class="logo">
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="index.html#home" role="menuitem" class="translate" data-en="Home" data-hu="Főoldal">Home</a></li>
+                <li role="none"><a href="index.html#event" role="menuitem" class="translate" data-en="Event" data-hu="Esemény">Event</a></li>
+                <li role="none"><a href="gallery.html" role="menuitem" aria-current="page" class="translate" data-en="Gallery" data-hu="Galéria">Gallery</a></li>
+                <li role="none"><a href="index.html#faq" role="menuitem" class="translate" data-en="FAQ" data-hu="GYIK">FAQ</a></li>
+                <li role="none"><a href="index.html#contact" role="menuitem" class="translate" data-en="Contact" data-hu="Kapcsolat">Contact</a></li>
+                <li role="none" class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="hu">HU</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="gallery-page" id="main">
+        <section class="section" aria-labelledby="galleryTitle">
+            <h1 class="section-title translate" id="galleryTitle" data-en="Gallery" data-hu="Galéria">Gallery</h1>
+            <p class="gallery-intro translate" data-en="Memories from our Get Together events, gathered in one place for easy browsing and downloads." data-hu="Emlékek a ghánai találkozókról, egy helyen a kényelmes böngészéshez és letöltéshez.">Memories from our Get Together events, gathered in one place for easy browsing and downloads.</p>
+
+            <div class="gallery-shell">
+                <div class="gallery-toolbar">
+                    <p class="gallery-count" id="galleryCount" aria-live="polite"></p>
+                    <div class="gallery-actions">
+                        <button class="cta-button" id="downloadAllBtn" type="button">
+                            <i class="fa-solid fa-file-zipper" aria-hidden="true"></i>
+                            <span class="translate" data-en="Download all" data-hu="Összes letöltése">Download all</span>
+                        </button>
+                        <a class="secondary-button translate" href="index.html#gallery-preview" data-en="Back to homepage" data-hu="Vissza a főoldalra">Back to homepage</a>
+                    </div>
+                    <p class="download-note translate" data-en="Large gallery downloads may take a little while to prepare." data-hu="Nagy galériák letöltésének előkészítése eltarthat egy ideig.">Large gallery downloads may take a little while to prepare.</p>
+                </div>
+                <p class="zip-status" id="zipStatus" aria-live="polite"></p>
+                <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+                <div class="load-more-wrap">
+                    <button class="secondary-button" id="loadMoreBtn" type="button">
+                        <span class="translate" data-en="Load more photos" data-hu="További képek betöltése">Load more photos</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
+        <div class="lightbox-panel">
+            <div class="lightbox-topbar">
+                <p class="lightbox-title" id="lightboxTitle"></p>
+                <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close gallery viewer">&times;</button>
+            </div>
+            <div class="lightbox-media">
+                <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="Previous photo">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="lightbox-image-wrap">
+                    <img class="lightbox-image" id="lightboxImage" src="" alt="">
+                </div>
+                <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="Next photo">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="lightbox-bottombar">
+                <p id="lightboxCounter"></p>
+                <a class="cta-button lightbox-download" id="lightboxDownload" href="#" download>
+                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    <span class="translate" data-en="Download photo" data-hu="Kép letöltése">Download photo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 Hunghanians - Roots. Connect.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="gallery-data.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>

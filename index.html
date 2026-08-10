@@ -3,53 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sankofa - Roots. Connect.</title>
+    <title>Hunghanians - Roots. Connect.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --ghana-red: #CE1126;
+            --ghana-yellow: #FCD116;
+            --ghana-green: #006B3F;
+            --ghana-black: #000000;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
             overflow-x: hidden;
-            background: #f5f5f5;
         }
 
-    .kente-pattern {
-            background: linear-gradient(90deg, 
-                
-#CE1126 0%, 
-#CE1126 20%,
-                
-#FCD116 20%, 
-#FCD116 40%,
-                
-#006B3F 40%, 
-#006B3F 60%,
-                
-#000000 60%, 
-#000000 80%,
-                
-#CE1126 80%, 
-#CE1126 100%
-            );
-            height: 8px;
-}
-        }
-
-        nav {
-            background: #ffffff;
-            padding: 1.5rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+        .nav {
+            position: fixed;
             top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
             z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
         .nav-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -57,110 +50,159 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #CE1126, #FCD116, #006B3F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--ghana-black);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
         }
 
         .nav-links a:hover {
-            color: #CE1126;
+            color: var(--ghana-red);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: #f0f0f0;
+            padding: 0.5rem;
+            border-radius: 50px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active {
+            background: var(--ghana-red);
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--ghana-black);
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(206, 17, 38, 0.95), rgba(0, 107, 63, 0.95)),
-                        url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="%23FCD116"/><rect x="20" width="20" height="20" fill="%23CE1126"/><rect x="40" width="20" height="20" fill="%23006B3F"/><rect x="60" width="20" height="20" fill="%23000000"/><rect x="80" width="20" height="20" fill="%23FCD116"/></svg>');
-            color: white;
-            padding: 8rem 5% 6rem;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 107, 63, 0.7), rgba(206, 17, 38, 0.5)),
+                        url('background.jpeg') center/cover no-repeat fixed;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(252, 209, 22, 0.1) 10px,
-                rgba(252, 209, 22, 0.1) 20px
-            );
-            animation: slide 20s linear infinite;
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(28px); }
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 1rem 4rem;
         }
 
         .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
             position: relative;
             z-index: 1;
+            color: #f8eab2;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.4);
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.4);
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: #FCD116;
-            color: #000;
+            padding: 1rem 3rem;
+            background: var(--ghana-red);
+            color: white;
             text-decoration: none;
-            font-weight: bold;
             border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(252, 209, 22, 0.4);
+            font-weight: 700;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(206, 17, 38, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
+            background: var(--ghana-yellow);
+            color: var(--ghana-black);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(252, 209, 22, 0.6);
+            box-shadow: 0 15px 40px rgba(252, 209, 22, 0.4);
         }
 
         .section {
-            padding: 5rem 5%;
-            max-width: 1200px;
+            padding: clamp(3rem, 8vw, 6rem) 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 3rem;
-            color: #333;
+            text-align: center;
+            font-weight: 700;
+            color: var(--ghana-black);
             position: relative;
             padding-bottom: 1rem;
         }
@@ -171,223 +213,1473 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, #CE1126, #FCD116, #006B3F);
+            background: linear-gradient(90deg, var(--ghana-red), var(--ghana-yellow), var(--ghana-green));
+            border-radius: 2px;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
+        .countdown-container {
             background: white;
+            border-radius: 20px;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid #FCD116;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            text-align: center;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #CE1126, #006B3F);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card h3 {
+        .countdown-title {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .events {
-            background: linear-gradient(135deg, #006B3F, #004d2c);
-            color: white;
-            padding: 5rem 5%;
-        }
-
-        .events-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .event-item {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
+            color: var(--ghana-red);
             margin-bottom: 1.5rem;
-            border-radius: 10px;
-            border-left: 5px solid #FCD116;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            font-weight: 700;
         }
 
-        .event-item:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateX(10px);
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        .event-date {
-            color: #FCD116;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--ghana-green);
+            line-height: 1;
             margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 20px;
+            padding: clamp(2rem, 5vw, 3rem);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+            border-color: var(--ghana-yellow);
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .event-title {
-            font-size: 1.5rem;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: var(--ghana-red);
             margin-bottom: 0.5rem;
         }
 
-        footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
+        .event-date {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--ghana-green);
+            font-weight: 600;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .event-description {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        .social-links {
-            display: flex;
+        .event-location-date {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: #555;
+            line-height: 1.8;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .gallery-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
         }
 
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #CE1126, #006B3F);
-            border-radius: 50%;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, var(--ghana-red), var(--ghana-yellow), var(--ghana-green));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item span {
+            position: absolute;
+            left: 0.75rem;
+            bottom: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            background: rgba(0, 0, 0, 0.58);
+            color: white;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .map-wrapper {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 400px;
+            margin-top: 1.5rem;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ghana-black);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+            color: var(--ghana-red);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--ghana-red);
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--ghana-yellow);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-left-color: var(--ghana-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: var(--ghana-green);
+            font-weight: 700;
+        }
+
+        .info-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('background_down.jpeg') center/cover no-repeat fixed;
+            color: white;
+            text-align: center;
+            padding: clamp(3rem, 6vw, 5rem) 5%;
+            margin-top: 0;
+        }
+
+        .contact-section h2 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact-section p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--ghana-yellow);
+            color: var(--ghana-black);
             text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .social-links a:hover {
-            transform: scale(1.1);
+        .contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: white;
         }
 
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        #event, #community, #gallery-preview, #faq {
+            background-color: #f8eab2;
+        }
+
+        .event-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .event-button {
+            flex: 1;
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            padding: 0.9rem 1.5rem;
+        }
+
+        .event-button i {
+            margin-right: 0.5rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideDown 0.4s ease;
+            overflow: hidden;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: #333;
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--ghana-black);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--ghana-yellow);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--ghana-red);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: var(--ghana-yellow);
+            color: var(--ghana-black);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(206, 17, 38, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .success-message i {
+            font-size: 4rem;
+            color: var(--ghana-green);
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            color: var(--ghana-green);
+            margin-bottom: 1rem;
+        }
+        
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .menu-toggle {
+                display: flex;
             }
 
             .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                max-height: 600px;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid #f0f0f0;
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1.2rem 5%;
+                font-size: 1.1rem;
+            }
+
+            .language-switcher {
+                margin: 1rem 5%;
+                width: auto;
+            }
+
+            .logo {
+                height: 40px;
             }
 
             .section {
                 padding: 3rem 5%;
             }
+
+            .event-buttons {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 70px;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .hero {
+                background-position: center 30%;
+                background-attachment: scroll;
+                min-height: 80vh;
+            }
+            
+            .contact-section {
+                background-position: center 40%;
+                background-attachment: scroll;
+                padding: clamp(4rem, 8vw, 6rem) 5%;
+            }
         }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .nav-content {
+                padding: 0 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .section {
+                padding: 6rem 10%;
+            }
+
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .hero p {
+                font-size: 1.6rem;
+            }
+        }
+        /* Easter Egg Snake Game Styles */
+            #snakeGame {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 9999;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            #snakeCanvas {
+                display: block;
+                margin: 0 auto;
+                background: #1a1a1a;
+                border: 4px solid var(--ghana-yellow);
+                box-shadow: 0 0 30px rgba(252, 209, 22, 0.5);
+            }
+            
+            .snake-game-ui {
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-align: center;
+                width: 90%;
+                max-width: 800px;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+            
+            .snake-game-score {
+                color: var(--ghana-yellow);
+            }
+            
+            .snake-game-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: var(--ghana-red);
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 10000;
+            }
+            
+            .snake-game-close:hover {
+                background: var(--ghana-yellow);
+                color: var(--ghana-black);
+                transform: rotate(90deg);
+            }
+            
+            .snake-game-instructions {
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                text-align: center;
+                font-size: 1rem;
+                opacity: 0.8;
+            }
+            
+            .snake-game-over-screen {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 3rem;
+                border-radius: 20px;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                min-width: 300px;
+            }
+            
+            .snake-game-over-screen h2 {
+                color: var(--ghana-red);
+                margin-bottom: 1rem;
+                font-size: 2.5rem;
+            }
+            
+            .snake-game-over-screen p {
+                color: var(--ghana-black);
+                margin-bottom: 2rem;
+                font-size: 1.3rem;
+            }
+            
+            .snake-game-restart-btn {
+                background: var(--ghana-green);
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-weight: bold;
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .snake-game-restart-btn:hover {
+                background: var(--ghana-yellow);
+                color: var(--ghana-black);
+                transform: translateY(-3px);
+            }
     </style>
 </head>
 <body>
-    <div class="kente-pattern"></div>
-    
-    <nav>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
-            <div class="logo">Sankofa</div>
-            <ul class="nav-links">
-                <li><a href="#about">Rólunk</a></li>
-                <li><a href="#programs">Programjaink</a></li>
-                <li><a href="#events">Események</a></li>
-                <li><a href="#contact">Kapcsolat</a></li>
+            <img src="logo_new.jpg" alt="Hunghanians Logo" class="logo">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#home" role="menuitem" class="translate" data-en="Home" data-hu="Főoldal">Home</a></li>
+                <li role="none"><a href="#event" role="menuitem" class="translate" data-en="Event" data-hu="Esemény">Event</a></li>
+                <li role="none"><a href="gallery.html" role="menuitem" class="translate" data-en="Gallery" data-hu="Galéria">Gallery</a></li>
+                <li role="none"><a href="#faq" role="menuitem" class="translate" data-en="FAQ" data-hu="GYIK">FAQ</a></li>
+                <li role="none"><a href="#contact" role="menuitem" class="translate" data-en="Contact" data-hu="Kapcsolat">Contact</a></li>
+                <li role="none" class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="hu">HU</button>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Akwaaba!</h1>
-            <p>Üdvözöljük a magyarországi ghánaiak hivatalos oldalán.</p>
-            <a href="#about" class="cta-button">Csatlakozz hozzánk!</a>
+            <h1>Akwaaba</h1>
+            <p class="translate" data-en="Celebrating Ghanaian Culture & Community in Hungary" data-hu="Ghánai kultúra és közösség ünneplése Magyarországon">Celebrating Ghanaian Culture & Community in Hungary</p>
+            <a href="#event" class="cta-button translate" data-en="Discover Our Next Event" data-hu="Fedezd fel a következő eseményünket">Discover Our Next Event</a>
         </div>
     </section>
 
-    <section class="section" id="about">
-        <h2 class="section-title">Rólunk</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #666; font-size: 1.1rem; line-height: 1.8;">
-            A Ghánai-Magyar Közösség egy élénk hálózat, amely ünnepli Ghána gazdag kulturális örökségét, miközben otthonának tekinti Magyarországot. Kapcsolatokat ápolunk, hagyományokat őrzünk, és kulturális cserelehetőségeket teremtünk a két nemzet között.
-        </p>
-    </section>
-
-    <section class="section" id="programs">
-        <h2 class="section-title">Programjaink</h2>
-        <div class="cards">
-            <div class="card">
-                <div class="card-icon">🎭</div>
-                <h3>Kulturális események</h3>
-                <p>Tapasztald meg a hagyományos ghánai ünnepeket, zenét, táncot és fesztiválokat évközben, miközben megosztjuk örökségünket a magyar közösséggel.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🍲</div>
-                <h3>Ghánai ételek</h3>
-                <p>Csatlakozz főzőműhelyeinkhez és gasztronómiai fesztiváljainkhoz, ahol autentikus ghánai ételeket kóstolhat meg, mint a jollof rizs, fufu és mogyoróleves.</p>
-        </div>
-    </section>
-
-    <section class="events" id="events">
-        <div class="events-content">
-            <h2 class="section-title" style="color: white;">Közelgő események</h2>
-            <div class="event-item">
-                <div class="event-date">Augusztus 8-9., 2026</div>
-                <div class="event-title">Ghánai találkozó</div>
-                <p>Csatlakozz hozzánk egy nagyszerű ünneplésre hagyományos zenével és autentikus ghánai konyhával.</p>
+    <section class="section" id="event">
+        <h2 class="section-title translate" data-en="Upcoming Event" data-hu="Közelgő események">Upcoming Event</h2>
+        
+        <div class="countdown-container">
+            <h3 class="countdown-title translate" data-en="Event Starts In:" data-hu="Az esemény kezdete:">Event Starts In:</h3>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label translate" data-en="Days" data-hu="Nap">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label translate" data-en="Hours" data-hu="Óra">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label translate" data-en="Minutes" data-hu="Perc">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label translate" data-en="Seconds" data-hu="Másodperc">Seconds</span>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section class="section" id="contact">
-        <h2 class="section-title">Lépjünk kapcsolatba</h2>
-        <p style="text-align: center; color: #666; font-size: 1.1rem; max-width: 600px; margin: 2rem auto;">
-            Szeretnél többet megtudni a közösségünkről vagy részt venni a közelgő rendezvényeinken? Lépj velünk kapcsolatba!
-        </p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="mailto:info@roots-connect.hu" class="cta-button">Contact Us</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.facebook.com" title="Facebook">f</a>
-                <a href="https://www.instagram.com" title="Instagram">📷</a>
-                <a href="https://www.x.com" title="X">X</a>
-                <a href="https://www.whatsapp.com" title="WhatsApp">💬</a>
+        <div class="event-card">
+            <div class="event-header">
+                <div>
+                    <h3 class="event-title translate" data-en="Get Together 2026" data-hu="Ghánai találkozó 2026">Get Together 2026</h3>
+                    <p class="event-date translate" data-en="August 8-9, 2026" data-hu="2026. augusztus 8-9.">August 8-9, 2026</p>
+                </div>
             </div>
-            <p>&copy; 2025 Sankofa community. All rights reserved.</p>
-            <p style="margin-top: 1rem; opacity: 0.8;">Sankofa - Roots. Connect.</p>
+            <p class="event-description translate" data-en="Hello dear friend! If you'd like to take part in the Ghanaian Get Together Party, please fill out this 3-minute registration form. It's important to complete it, as this information helps us plan food and drinks for the event." data-hu="Kedves érdeklődő! Ha szeretnél részt venni a ghánai összejövetelen, kérlek, töltsd ki ezt a 3 perces regisztrációs űrlapot. Fontos, hogy kitöltsd, mert ezek az információk segítenek nekünk az eseményre szükséges ételek és italok megtervezésében.">
+                Hello dear friend! If you'd like to take part in the Ghanaian Get Together Party, please fill out this 3-minute registration form. It's important to complete it, as this information helps us plan food and drinks for the event.
+            </p>
+
+            <p class="event-location-date translate" data-en="📍 Location: Inárcs, Szőlőhegy, 2365 (KEMP)" data-hu="📍 Helyszín: Inárcs, Szőlőhegy, 2365 (KEMP)">
+                📍 Location: Inárcs, Szőlőhegy, 2365 (KEMP)
+            </p>
+
+            <p class="event-description translate" data-en="💰 Participation fee: Adults: 10,000 HUF / person | Children (ages 6–14): 5,000 HUF / person. The participation fee must be paid by bank transfer within 5 days after registration — unfortunately, without payment, we won't be able to confirm your spot at the event." data-hu="💰 Részvételi díj: Felnőttek: 10,000 HUF / fő | Gyerekek (6-14 évesek): 5,000 HUF / fő. A részvételi díjat banki átutalással kell befizetni a regisztrációt követő 5 napon belül — sajnos fizetés nélkül nem tudjuk megerősíteni a résztvételedet az eseményen.">
+            💰 Participation fee: Adults: 10,000 HUF / person | Children (ages 6–14): 5,000 HUF / person. The participation fee must be paid by bank transfer within 5 days after registration — unfortunately, without payment, we won't be able to confirm your spot at the event.
+            </p>
+
+            <div class="event-buttons">
+                <a href="https://docs.google.com/forms/d/1s4tyGlh01djRyoiZPimXUjb_PSEqfbLgj7vmx87SHZI/preview" target="_blank" rel="noopener noreferrer" class="contact-button event-button translate" aria-label="Register for the event" data-en="Register here" data-hu="Regisztráció">
+                    <i class="fa-solid fa-user-plus" aria-hidden="true"></i> <span class="translate" data-en="Register here" data-hu="Regisztráció">Register here</span>
+                </a>
+                <a href="https://www.facebook.com/events/2044645652980491/" target="_blank" rel="noopener noreferrer" class="contact-button event-button translate" aria-label="View event on Facebook" data-en="View Facebook event" data-hu="Facebook esemény">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i> <span class="translate" data-en="View Facebook event" data-hu="Facebook esemény">View Facebook event</span>
+                </a>
+            </div>
         </div>
+
+        <!-- Map Section -->
+        <div class="map-container">
+            <h3 class="translate" data-en="📍 Event Location" data-hu="📍 Esemény helyszíne" style="font-size: 1.5rem; color: var(--ghana-red); margin-bottom: 1rem;">📍 Event Location</h3>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10828.633112898493!2d19.3070943!3d47.2721604!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474193b4de4be4ed%3A0x156524f9b53e990b!2sKelet-Eur%C3%B3pa%20Misszi%C3%B3!5e0!3m2!1sen!2shu!4v1761596276211!5m2!1sen!2shu" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery-preview">
+        <h2 class="section-title translate" data-en="Gallery" data-hu="Galéria">Gallery</h2>
+        <div class="gallery-container">
+            <p class="translate" data-en="Memories from our previous Get Together events" data-hu="Emlékképek korábbi ghánai találkozókról" style="text-align: center; color: #555; margin-bottom: 1rem;">Memories from our previous Get Together events</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="image1.jpg" alt="Photo 1">
+                    <span class="translate" data-en="Photo 1" data-hu="Kép 1">Photo 1</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="image2.jpg" alt="Photo 2">
+                    <span class="translate" data-en="Photo 2" data-hu="Kép 2">Photo 2</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="image3.jpg" alt="Photo 3">
+                    <span class="translate" data-en="Photo 3" data-hu="Kép 3">Photo 3</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="image4.jpg" alt="Photo 4">
+                    <span class="translate" data-en="Photo 4" data-hu="Kép 4">Photo 4</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="image5.jpg" alt="Photo 5">
+                    <span class="translate" data-en="Photo 5" data-hu="Kép 5">Photo 5</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="image6.jpg" alt="Photo 6">
+                    <span class="translate" data-en="Photo 6" data-hu="Kép 6">Photo 6</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="gallery.html" class="cta-button translate" data-en="Open Full Gallery" data-hu="Teljes galéria megnyitása">Open Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="faq">
+        <h2 class="section-title translate" data-en="Frequently Asked Questions" data-hu="Gyakran Ismételt Kérdések">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span class="translate" data-en="TBA" data-hu="TBA">TBA</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content translate" data-en="TBA" data-hu="TBA">
+                        TBA
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="community">
+        <h2 class="section-title translate" data-en="Community" data-hu="Közösség">Community</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3 class="translate" data-en="🇬🇭 Our History" data-hu="🇬🇭 Történetünk">🇬🇭 Our History</h3>
+                <p class="translate" data-en="TBA" data-hu="TBA">
+                    TBA
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="translate" data-en="🎉 Annual Get Together Party" data-hu="🎉 Éves Ghánai Találkozó">🎉 Annual Get Together Party</h3>
+                <p class="translate" data-en="Our annual Get Together Party is the center of our community's life in Hungary." data-hu="Az éves ghánai találkozó közösségünk életének központja Magyarországon.">
+                    Our annual Get Together Party is the center of our community's life in Hungary.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="translate" data-en="Stay Connected" data-hu="Maradjunk kapcsolatban">Stay Connected</h2>
+        <p class="translate" data-en="Join us and never miss an update on our event!" data-hu="Csatlakozz hozzánk, és ne maradj le egyetlen értesítésről sem!">Join us and never miss an update on our event!</p>
+        <button class="contact-button" id="contactBtn" aria-label="Open contact form"><span class="translate" data-en="Contact Us" data-hu="Lépj velünk kapcsolatba">Contact Us</span></button>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="translate" data-en="Get in Touch" data-hu="Lépj velünk kapcsolatba">Get in Touch</h2>
+                <button class="close" id="closeModal" aria-label="Close contact form">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="translate" data-en="Name *" data-hu="Név *">Name *</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="translate" data-en="Email *" data-hu="Email *">Email *</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="translate" data-en="Subject *" data-hu="Tárgy *">Subject *</label>
+                        <input type="text" id="subject" name="subject" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="translate" data-en="Message *" data-hu="Üzenet *">Message *</label>
+                        <textarea id="message" name="message" required aria-required="true"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button translate" data-en="Send Message" data-hu="Üzenet küldése">Send Message</button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <h3 class="translate" data-en="Message Sent!" data-hu="Üzenet elküldve!">Message Sent!</h3>
+                    <p class="translate" data-en="Thank you for contacting us. We'll get back to you soon!" data-hu="Köszönjük, hogy írtál nekünk. Hamarosan felvesszük veled a kapcsolatot!">Thank you for contacting us. We'll get back to you soon!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 Hunghanians - Roots. Connect.</p>
     </footer>
+
+    <div id="snakeGame">
+    <button class="snake-game-close" id="snakeGameClose">&times;</button>
+    <div class="snake-game-ui">
+        <div>🐍 <span class="translate" data-en="Score" data-hu="Pontszám">Score</span>: <span class="snake-game-score" id="snakeScore">0</span></div>
+        <div>🏆 <span class="translate" data-en="High Score" data-hu="Rekord">High Score</span>: <span class="snake-game-score" id="snakeHighScore">0</span></div>
+    </div>
+    <canvas id="snakeCanvas"></canvas>
+    <div class="snake-game-instructions">
+        <p class="translate" data-en="⬅️ ➡️ ⬆️ ⬇️ Use arrow keys to move | Eat the stars! ⭐" data-hu="⬅️ ➡️ ⬆️ ⬇️ Nyilak a mozgáshoz | Edd meg a csillagokat! ⭐">
+            ⬅️ ➡️ ⬆️ ⬇️ Use arrow keys to move | Eat the stars! ⭐
+        </p>
+        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.6;" class="translate" data-en="Press 'G' three times quickly to play anytime!" data-hu="Nyomd meg a 'G'-t háromszor gyorsan a játékhoz!">
+            Press 'G' three times quickly to play anytime!
+        </p>
+    </div>
+    <div class="snake-game-over-screen" id="snakeGameOverScreen">
+        <h2 class="translate" data-en="Game Over!" data-hu="Játék vége!">Game Over!</h2>
+        <p class="translate" data-en="Final Score" data-hu="Végső pontszám">Final Score</p>
+        <p class="snake-game-score" id="snakeFinalScore" style="font-size: 3rem; margin: 1rem 0;">0</p>
+        <button class="snake-game-restart-btn" id="snakeGameRestart"><span class="translate" data-en="Play Again" data-hu="Újra játék">Play Again</span></button>
+    </div>
+</div>
+
+    <script>
+        let currentLang = 'en';
+
+        // Language Switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentLang = btn.dataset.lang;
+                translatePage(currentLang);
+            });
+        });
+
+        function translatePage(lang) {
+            const elements = document.querySelectorAll('.translate');
+            elements.forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) {
+                    if (el.querySelector('.translate')) {
+                        return;
+                    }
+                    el.textContent = translation;
+                }
+            });
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('August 8, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (distance < 0) {
+                document.querySelector('.countdown-container').innerHTML = '<h3 style="color: var(--ghana-red);">Event is Live!</h3>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('.nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.padding = '1rem 5%';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.padding = '1.5rem 5%';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-question').classList.remove('active');
+                });
+                
+                // Open clicked FAQ if it wasn't active
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('contactModal');
+        const contactBtn = document.getElementById('contactBtn');
+        const closeModal = document.getElementById('closeModal');
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => document.getElementById('name').focus(), 100);
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            contactForm.style.display = 'block';
+            successMessage.style.display = 'none';
+            contactForm.reset();
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                contactForm.style.display = 'block';
+                successMessage.style.display = 'none';
+                contactForm.reset();
+            }
+        });
+
+        // Handle form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Form data:', data);
+            
+            contactForm.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                contactForm.style.display = 'block';
+                successMessage.style.display = 'none';
+                contactForm.reset();
+            }, 3000);
+        });
+
+        // Keyboard accessibility for modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                contactForm.style.display = 'block';
+                successMessage.style.display = 'none';
+                contactForm.reset();
+            }
+        });
+    // ========== SNAKE GAME ==========
+        let gPressCount = 0;
+        let gPressTimer = null;
+        
+        // Detect 'G' key pressed 3 times quickly
+        document.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'g') {
+                gPressCount++;
+                
+                if (gPressTimer) clearTimeout(gPressTimer);
+                
+                if (gPressCount === 3) {
+                    startSnakeGame();
+                    gPressCount = 0;
+                } else {
+                    gPressTimer = setTimeout(() => {
+                        gPressCount = 0;
+                    }, 500);
+                }
+            }
+        });
+        
+        // Snake Game variables
+        const snakeGameContainer = document.getElementById('snakeGame');
+        const snakeCanvas = document.getElementById('snakeCanvas');
+        const snakeCtx = snakeCanvas.getContext('2d');
+        const snakeScoreEl = document.getElementById('snakeScore');
+        const snakeHighScoreEl = document.getElementById('snakeHighScore');
+        const snakeGameOverScreen = document.getElementById('snakeGameOverScreen');
+        const snakeFinalScoreEl = document.getElementById('snakeFinalScore');
+        const snakeGameRestartBtn = document.getElementById('snakeGameRestart');
+        const snakeGameCloseBtn = document.getElementById('snakeGameClose');
+        
+        let snakeGameActive = false;
+        let snakeScore = 0;
+        let snakeHighScore = 0;
+        let snake = [];
+        let snakeDirection = { x: 1, y: 0 };
+        let nextDirection = { x: 1, y: 0 };
+        let food = { x: 0, y: 0 };
+        let gridSize = 20;
+        let tileCount = 0;
+        let snakeSpeed = 100;
+        let snakeGameLoop;
+        let lastRenderTime = 0;
+        
+        const GHANA_COLORS = {
+            red: '#CE1126',
+            yellow: '#FCD116',
+            green: '#006B3F',
+            black: '#000000'
+        };
+        
+        function resizeSnakeCanvas() {
+            const maxWidth = Math.min(window.innerWidth - 40, 600);
+            const maxHeight = Math.min(window.innerHeight - 200, 600);
+            const size = Math.min(maxWidth, maxHeight);
+            
+            snakeCanvas.width = size;
+            snakeCanvas.height = size;
+            tileCount = Math.floor(size / gridSize);
+        }
+        
+        function startSnakeGame() {
+            snakeGameContainer.style.display = 'block';
+            snakeGameOverScreen.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            
+            resizeSnakeCanvas();
+            snakeScore = 0;
+            snakeDirection = { x: 1, y: 0 };
+            nextDirection = { x: 1, y: 0 };
+            snake = [
+                { x: Math.floor(tileCount / 2), y: Math.floor(tileCount / 2) },
+                { x: Math.floor(tileCount / 2) - 1, y: Math.floor(tileCount / 2) },
+                { x: Math.floor(tileCount / 2) - 2, y: Math.floor(tileCount / 2) }
+            ];
+            snakeGameActive = true;
+            
+            spawnFood();
+            updateSnakeScore();
+            
+            lastRenderTime = 0;
+            requestAnimationFrame(snakeGameTick);
+        }
+        
+        function endSnakeGame() {
+            snakeGameActive = false;
+            if (snakeScore > snakeHighScore) {
+                snakeHighScore = snakeScore;
+                snakeHighScoreEl.textContent = snakeHighScore;
+            }
+            snakeFinalScoreEl.textContent = snakeScore;
+            snakeGameOverScreen.style.display = 'block';
+        }
+        
+        function closeSnakeGame() {
+            snakeGameActive = false;
+            snakeGameContainer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function updateSnakeScore() {
+            snakeScoreEl.textContent = snakeScore;
+            snakeHighScoreEl.textContent = snakeHighScore;
+        }
+        
+        function spawnFood() {
+            let validPosition = false;
+            while (!validPosition) {
+                food.x = Math.floor(Math.random() * tileCount);
+                food.y = Math.floor(Math.random() * tileCount);
+                
+                validPosition = true;
+                for (let segment of snake) {
+                    if (segment.x === food.x && segment.y === food.y) {
+                        validPosition = false;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        function drawSnake() {
+            snake.forEach((segment, index) => {
+                // Gradient from red to green through yellow
+                let color;
+                if (index === 0) {
+                    color = GHANA_COLORS.red; // Head
+                } else if (index < snake.length / 3) {
+                    color = GHANA_COLORS.red;
+                } else if (index < (snake.length * 2) / 3) {
+                    color = GHANA_COLORS.yellow;
+                } else {
+                    color = GHANA_COLORS.green;
+                }
+                
+                snakeCtx.fillStyle = color;
+                snakeCtx.fillRect(
+                    segment.x * gridSize + 1,
+                    segment.y * gridSize + 1,
+                    gridSize - 2,
+                    gridSize - 2
+                );
+                
+                // Draw eyes on head
+                if (index === 0) {
+                    snakeCtx.fillStyle = 'white';
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 5,
+                        segment.y * gridSize + 5,
+                        4,
+                        4
+                    );
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 11,
+                        segment.y * gridSize + 5,
+                        4,
+                        4
+                    );
+                    snakeCtx.fillStyle = GHANA_COLORS.black;
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 6,
+                        segment.y * gridSize + 6,
+                        2,
+                        2
+                    );
+                    snakeCtx.fillRect(
+                        segment.x * gridSize + 12,
+                        segment.y * gridSize + 6,
+                        2,
+                        2
+                    );
+                }
+            });
+        }
+        
+        function drawFood() {
+            // Draw a star (black star from Ghana flag)
+            const centerX = food.x * gridSize + gridSize / 2;
+            const centerY = food.y * gridSize + gridSize / 2;
+            
+            snakeCtx.fillStyle = GHANA_COLORS.black;
+            drawStar(centerX, centerY, 5, gridSize / 3, gridSize / 6);
+        }
+        
+        function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+            let rot = Math.PI / 2 * 3;
+            let x = cx;
+            let y = cy;
+            const step = Math.PI / spikes;
+        
+            snakeCtx.beginPath();
+            snakeCtx.moveTo(cx, cy - outerRadius);
+            for (let i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                snakeCtx.lineTo(x, y);
+                rot += step;
+        
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                snakeCtx.lineTo(x, y);
+                rot += step;
+            }
+            snakeCtx.lineTo(cx, cy - outerRadius);
+            snakeCtx.closePath();
+            snakeCtx.fill();
+        }
+        
+        function moveSnake() {
+            snakeDirection = { ...nextDirection };
+            
+            const head = { x: snake[0].x + snakeDirection.x, y: snake[0].y + snakeDirection.y };
+            
+            // Check wall collision
+            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                endSnakeGame();
+                return false;
+            }
+            
+            // Check self collision
+            for (let segment of snake) {
+                if (head.x === segment.x && head.y === segment.y) {
+                    endSnakeGame();
+                    return false;
+                }
+            }
+            
+            snake.unshift(head);
+            
+            // Check food collision
+            if (head.x === food.x && head.y === food.y) {
+                snakeScore += 10;
+                updateSnakeScore();
+                spawnFood();
+            } else {
+                snake.pop();
+            }
+            
+            return true;
+        }
+        
+        function snakeGameTick(currentTime) {
+            if (!snakeGameActive) return;
+            
+            const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
+            if (secondsSinceLastRender < 1 / (10 + snakeScore / 10)) {
+                requestAnimationFrame(snakeGameTick);
+                return;
+            }
+            
+            lastRenderTime = currentTime;
+            
+            // Clear canvas
+            snakeCtx.fillStyle = '#1a1a1a';
+            snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+            
+            // Draw grid
+            snakeCtx.strokeStyle = '#2d2d2d';
+            snakeCtx.lineWidth = 1;
+            for (let i = 0; i <= tileCount; i++) {
+                snakeCtx.beginPath();
+                snakeCtx.moveTo(i * gridSize, 0);
+                snakeCtx.lineTo(i * gridSize, snakeCanvas.height);
+                snakeCtx.stroke();
+                
+                snakeCtx.beginPath();
+                snakeCtx.moveTo(0, i * gridSize);
+                snakeCtx.lineTo(snakeCanvas.width, i * gridSize);
+                snakeCtx.stroke();
+            }
+            
+            if (moveSnake()) {
+                drawFood();
+                drawSnake();
+                requestAnimationFrame(snakeGameTick);
+            }
+        }
+        
+        // Snake controls
+        document.addEventListener('keydown', (e) => {
+            if (!snakeGameActive) return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                    if (snakeDirection.y === 0) nextDirection = { x: 0, y: -1 };
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                    if (snakeDirection.y === 0) nextDirection = { x: 0, y: 1 };
+                    e.preventDefault();
+                    break;
+                case 'ArrowLeft':
+                    if (snakeDirection.x === 0) nextDirection = { x: -1, y: 0 };
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    if (snakeDirection.x === 0) nextDirection = { x: 1, y: 0 };
+                    e.preventDefault();
+                    break;
+            }
+        });
+        
+        snakeGameRestartBtn.addEventListener('click', startSnakeGame);
+        snakeGameCloseBtn.addEventListener('click', closeSnakeGame);
+        
+        window.addEventListener('resize', () => {
+            if (snakeGameActive) {
+                resizeSnakeCanvas();
+            }
+        });
+        
+        // Close game with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && snakeGameContainer.style.display === 'block') {
+                closeSnakeGame();
+            }
+        });       
+    </script>
 </body>
 </html>
